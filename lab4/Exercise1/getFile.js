@@ -8,7 +8,6 @@ readFileAsync = function(pathName) {
 };
 
 process.on("message", pat => {
-  console.log("message on child", pat);
-  var filePath = path.join(__dirname, "files\\file.txt");
+  var filePath = path.join(__dirname, pat);
   readFileAsync(filePath);
 });
