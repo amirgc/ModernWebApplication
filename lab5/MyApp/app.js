@@ -39,5 +39,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.set('json spaces', 40);
+app.set('x-powered-by',false);
+app.enable('strict routing');
+app.enable('case sensitive routing');
+app.enable('trust proxy');
+
 app.listen(3000)
 module.exports = app;
