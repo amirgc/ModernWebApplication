@@ -7,7 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var cors = require('cors')
 var app = express();
 
 // view engine setup
@@ -39,6 +39,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+app.use(cors())
 
 app.set('json spaces', 40);
 app.set('x-powered-by',false);

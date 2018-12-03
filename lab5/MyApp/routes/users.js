@@ -12,5 +12,5 @@ router.get('/test', function(req, res, next) {
   console.log('test')
   res.render('index', { title: 'Express' });
 });
-
+z
 module.exports = router;
