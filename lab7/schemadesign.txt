@@ -1,0 +1,7 @@
+{
+    _id:objectId(),
+    name:string,
+    isbn:string,
+    authors:Array,
+    students:Array
+}
