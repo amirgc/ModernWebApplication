@@ -9,7 +9,8 @@ router.get("/", function(req, res, next) {
   client.connect(function(err) {
     const db = client.db("rms");
     db.collection("restaurants")
-      .find({}).project({ restaurant_id: 1, name: 1, district: 1, cuisine: 1,_id:0 })
+      .find({})
+      .sort({ name: 1 })
       .toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
