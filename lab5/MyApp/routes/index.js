@@ -25,6 +25,7 @@ router.get("/api", function(req, res, next) {
       return next(error);
     } else {
       console.log(users);
+      res.setHeader("link", `</p=${parseFloat(page)+1}>`, (rel = "next"));
       res.set("Cache-Control", "private,max-age=86400");
       return res.send(users);
     }

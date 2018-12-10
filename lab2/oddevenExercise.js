@@ -1,19 +1,19 @@
 Array.prototype.even = function() {
   let self = this;
-  let evenonly = new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     let arr = self.filter(num => num % 2 === 0);
     resolve(arr);
   });
-  return evenonly;
+
 };
 
 Array.prototype.odd = function() {
   let self = this;
-  let evenonly = new Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     let arr = self.filter(num => num % 2 !== 0);
     resolve(arr);
   });
-  return evenonly;
+  
 };
 
 console.log("Start");

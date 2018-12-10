@@ -9,6 +9,7 @@ server.on("request", (req, res) => {
   res.writeHead(200, { "Content-Type": "text/plain" });
   const childProcess = fork("getFile.js");
   childProcess.send(filePath);
+
   childProcess.on("message", fileData => {
   //  console.log("return data to child 12", fileData);
     res.write(fileData);
@@ -16,4 +17,4 @@ server.on("request", (req, res) => {
   });
 });
 
-server.listen(4000);
+server.listen(4000,()=>{console.log("server running")});

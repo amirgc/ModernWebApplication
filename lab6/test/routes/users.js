@@ -1,10 +1,14 @@
 var express = require("express");
 var router = express.Router();
+var url = require("url");
 const { check, validationResult } = require("express-validator/check");
 
 let user = [{ id: 1, name: "amir", course: "CS572", grade: 95 }];
 /* GET users listing. */
 router.get("/", function(req, res, next) {
+  let query = url.parse(req.url, true).query;
+  console.log("hey", query);
+  console.log(query.results);
   res.send(user);
 });
 router.post("/", [check("name").isLength({ min: 5 })], function(

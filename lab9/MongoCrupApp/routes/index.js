@@ -17,13 +17,24 @@ router.post("/", function(req, res, next) {
 router.get("/", function(req, res, next) {
   client.connect(function(err) {
     const db = client.db("rms");
-    var col = db.collection("addrses ");
+    var col = db.collection("addresses");
     //col.createIndex({ location: "2d" });
     col
-      .aggregate([{ $group: { _id: "$_id", total: { $sum: "$pop" } } }])
+      //.aggregate([{ $match: { state: "IA" } }])
+      .aggregate([
+        {
+          $group: {
+            _id: { state: "$state", city: "$city" },
+            pop: { $sum: "$pop" }
+          }
+        },
+        { $sort: { "_id.state": 1, pop: -1 } },
+        { $group: { _id: { state: "$_id.state" }, pop: { $first: "$pop" } } }
+      ])
+      //.find({})
       .toArray(function(err, result) {
         if (err) throw err;
-        console.log(result);
+        console.log("called", result);
         res.send(result);
       });
   });
