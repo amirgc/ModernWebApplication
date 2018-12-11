@@ -1,0 +1,7 @@
+<app-smart></app-smart>
+<div>{{ display }}</div>
+<button (click)="display = !display">Change</button>
+<div appIsVisible [makeVisible]="display"><p>custom directive test</p></div>
+
+<h3>Loggable</h3>
+<div appLoggable>Click me</div>
