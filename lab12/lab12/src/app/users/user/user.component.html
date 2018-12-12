@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let user of users">
+    <a href="/users/{{ user.login.username }}"
+      >{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</a
+    >
+    <img src="{{ user.picture.thumbnail }}" />
+  </li>
+</ul>
+<button (click)="getUsers()">Next</button>
