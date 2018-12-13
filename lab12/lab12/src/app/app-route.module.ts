@@ -12,8 +12,7 @@ export const routes: Routes = [
       {
         path: "users",
         component: UserComponent,
-        pathMatch: "full",
-        canActivate: [AuthGuard]
+        pathMatch: "full"
       },
       {
         path: "users/:id",
